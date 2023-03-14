@@ -2,8 +2,11 @@ package com.setianjay.socialmedia.webservices.controller;
 
 import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 /*
@@ -31,7 +34,9 @@ public class UserRestController {
     }
 
     @PostMapping("/api/users")
-    public UserResponse createUser(@RequestBody UserResponse user){
-        return userService.save(user);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserResponse user){
+        UserResponse userResponse = userService.save(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userResponse.getId()).toUri();
+        return ResponseEntity.created(uri).body(userResponse);
     }
 }
