@@ -29,4 +29,9 @@ public class UserRestController {
     public UserResponse retrieveSpecificUsers(@PathVariable(name = "id") Long id){
         return userService.findById(id);
     }
+
+    @PostMapping("/api/users")
+    public UserResponse createUser(@RequestBody UserResponse user){
+        return userService.save(user);
+    }
 }
