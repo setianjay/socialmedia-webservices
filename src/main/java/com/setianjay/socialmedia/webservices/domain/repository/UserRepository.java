@@ -1,6 +1,6 @@
 package com.setianjay.socialmedia.webservices.domain.repository;
 
-import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
+import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 
 import java.util.List;
 

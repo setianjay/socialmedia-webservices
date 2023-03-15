@@ -1,7 +1,7 @@
 package com.setianjay.socialmedia.webservices.domain;
 
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
-import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
+import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,16 +1,16 @@
-package com.setianjay.socialmedia.webservices.exception.handler;
+package com.setianjay.socialmedia.webservices.advice;
 
 import com.setianjay.socialmedia.webservices.constant.Constant;
 import com.setianjay.socialmedia.webservices.exception.ResourceNotFoundException;
-import com.setianjay.socialmedia.webservices.exception.model.ErrorServerResponse;
-import com.setianjay.socialmedia.webservices.exception.model.ErrorResourceResponse;
+import com.setianjay.socialmedia.webservices.model.response.ErrorResourceResponse;
+import com.setianjay.socialmedia.webservices.model.response.ErrorServerResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@ControllerAdvice
-public class ErrorResponseEntityHandler {
+@RestControllerAdvice
+public class AppExceptionResponseHandler {
 
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorServerResponse> handleException(Exception e){

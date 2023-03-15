@@ -1,13 +1,13 @@
-package com.setianjay.socialmedia.webservices.domain.model;
+package com.setianjay.socialmedia.webservices.model.entity;
 
 import java.time.LocalDate;
 
-public class UserResponse {
+public class UserEntity {
     private Long id;
     private String name;
     private LocalDate birthDate;
 
-    public UserResponse(Long id, String name, LocalDate birthDate) {
+    public UserEntity(Long id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;

@@ -1,6 +1,6 @@
 package com.setianjay.socialmedia.webservices.dao;
 
-import com.setianjay.socialmedia.webservices.dao.entity.UserEntity;
+import com.setianjay.socialmedia.webservices.model.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

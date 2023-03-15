@@ -1,4 +1,4 @@
-package com.setianjay.socialmedia.webservices.exception.model;
+package com.setianjay.socialmedia.webservices.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

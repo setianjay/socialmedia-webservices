@@ -1,7 +1,7 @@
 package com.setianjay.socialmedia.webservices.util;
 
-import com.setianjay.socialmedia.webservices.dao.entity.UserEntity;
-import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
+import com.setianjay.socialmedia.webservices.model.entity.UserEntity;
+import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class MappingUtil {
     }
 
     public static UserEntity userResponseToUserEntity(UserResponse userResponse) {
-        return new UserEntity(userResponse.getId(), userResponse.getName(), userResponse.getBirthDate());
+        return new UserEntity(userResponse.id(), userResponse.name(), userResponse.birthDate());
     }
 
 }

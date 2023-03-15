@@ -1,7 +1,7 @@
 package com.setianjay.socialmedia.webservices.controller;
 
 import com.setianjay.socialmedia.webservices.constant.Constant;
-import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
+import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
 import com.setianjay.socialmedia.webservices.exception.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +53,7 @@ public class UserRestController {
     @PostMapping("/api/users")
     public ResponseEntity<UserResponse> createUser(@RequestBody UserResponse user){
         UserResponse userResponse = userService.save(user);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userResponse.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userResponse.id()).toUri();
         return ResponseEntity.created(uri).body(userResponse);
     }
 }
