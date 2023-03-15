@@ -1,5 +1,6 @@
 package com.setianjay.socialmedia.webservices.controller;
 
+import com.setianjay.socialmedia.webservices.constant.Constant;
 import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
 import com.setianjay.socialmedia.webservices.exception.UserNotFoundException;
@@ -30,12 +31,13 @@ public class UserRestController {
     }
 
     @GetMapping("/api/users/{id}")
-    public UserResponse retrieveSpecificUsers(@PathVariable(name = "id") Long id){
+    public ResponseEntity<UserResponse> retrieveSpecificUsers(@PathVariable(name = "id") Long id){
         UserResponse response = userService.findById(id);
         if(response == null){
-            throw new UserNotFoundException("with id: " + id);
+            throw new UserNotFoundException(Constant.ErrorMessage.USER_NOT_FOUND);
         }
-        return response;
+        
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/api/users")
