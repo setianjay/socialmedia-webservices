@@ -23,13 +23,8 @@ public class UserDao {
     }
 
 
-    public UserEntity deleteById(Long id){
-        UserEntity deletedUser = findById(id);
-        boolean hasDeleted = userList.removeIf(userEntity -> userEntity.getId().equals(id));
-        if(!hasDeleted){
-            return null;
-        }
-        return deletedUser;
+    public Boolean deleteById(Long id){
+        return userList.removeIf(userEntity -> userEntity.getId().equals(id));
     }
 
     public List<UserEntity> findAll(){

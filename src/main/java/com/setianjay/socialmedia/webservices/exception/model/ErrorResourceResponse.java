@@ -1,11 +1,11 @@
 package com.setianjay.socialmedia.webservices.exception.model;
 
-public class ErrorUserResponse {
+public class ErrorResourceResponse {
     private final Boolean success;
     private final int code;
     private final String message;
 
-    public ErrorUserResponse(int code, String message) {
+    public ErrorResourceResponse(int code, String message) {
         this.success = false;
         this.code = code;
         this.message = message;

@@ -18,8 +18,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public UserResponse deleteById(Long id) {
-        return MappingUtil.userEntityToUserResponse(userDao.deleteById(id));
+    public Boolean deleteById(Long id) {
+        return userDao.deleteById(id);
     }
 
     @Override

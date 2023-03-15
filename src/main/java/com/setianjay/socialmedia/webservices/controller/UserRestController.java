@@ -3,7 +3,7 @@ package com.setianjay.socialmedia.webservices.controller;
 import com.setianjay.socialmedia.webservices.constant.Constant;
 import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
-import com.setianjay.socialmedia.webservices.exception.UserNotFoundException;
+import com.setianjay.socialmedia.webservices.exception.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -34,10 +34,20 @@ public class UserRestController {
     public ResponseEntity<UserResponse> retrieveSpecificUsers(@PathVariable(name = "id") Long id){
         UserResponse response = userService.findById(id);
         if(response == null){
-            throw new UserNotFoundException(Constant.ErrorMessage.USER_NOT_FOUND);
+            throw new ResourceNotFoundException(Constant.ErrorMessage.USER_NOT_FOUND);
         }
-        
+
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/api/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable(name = "id") Long id){
+        Boolean isDeleted = userService.deleteById(id);
+        if(!isDeleted){
+            throw new ResourceNotFoundException(Constant.ErrorMessage.USER_NOT_FOUND);
+        }
+
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/api/users")

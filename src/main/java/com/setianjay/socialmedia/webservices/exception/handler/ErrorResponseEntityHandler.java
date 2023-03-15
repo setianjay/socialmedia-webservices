@@ -1,9 +1,9 @@
 package com.setianjay.socialmedia.webservices.exception.handler;
 
 import com.setianjay.socialmedia.webservices.constant.Constant;
-import com.setianjay.socialmedia.webservices.exception.UserNotFoundException;
+import com.setianjay.socialmedia.webservices.exception.ResourceNotFoundException;
 import com.setianjay.socialmedia.webservices.exception.model.ErrorServerResponse;
-import com.setianjay.socialmedia.webservices.exception.model.ErrorUserResponse;
+import com.setianjay.socialmedia.webservices.exception.model.ErrorResourceResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,10 +22,10 @@ public class ErrorResponseEntityHandler {
         return new ResponseEntity<>(errorServerResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(value = UserNotFoundException.class)
-    public ResponseEntity<ErrorUserResponse> handleException(UserNotFoundException e){
-        ErrorUserResponse errorUserResponse = new ErrorUserResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResourceResponse> handleException(ResourceNotFoundException e){
+        ErrorResourceResponse errorResourceResponse = new ErrorResourceResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
 
-        return new ResponseEntity<>(errorUserResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorResourceResponse, HttpStatus.NOT_FOUND);
     }
 }
