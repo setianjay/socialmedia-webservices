@@ -29,6 +29,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public UserResponse findById(Long id) {
+        UserEntity user = userDao.findById(id);
+        if (user == null) {
+            return null;
+        }
+
         return MappingUtil.userEntityToUserResponse(userDao.findById(id));
     }
 

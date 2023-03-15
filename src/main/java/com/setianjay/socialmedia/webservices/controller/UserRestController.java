@@ -2,6 +2,7 @@ package com.setianjay.socialmedia.webservices.controller;
 
 import com.setianjay.socialmedia.webservices.domain.model.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
+import com.setianjay.socialmedia.webservices.exception.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -30,7 +31,11 @@ public class UserRestController {
 
     @GetMapping("/api/users/{id}")
     public UserResponse retrieveSpecificUsers(@PathVariable(name = "id") Long id){
-        return userService.findById(id);
+        UserResponse response = userService.findById(id);
+        if(response == null){
+            throw new UserNotFoundException("with id: " + id);
+        }
+        return response;
     }
 
     @PostMapping("/api/users")
