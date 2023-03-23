@@ -1,5 +1,6 @@
 package com.setianjay.socialmedia.webservices.domain.repository;
 
+import com.setianjay.socialmedia.webservices.model.request.UserRequest;
 import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface UserRepository {
 
     UserResponse findById(Long id);
 
-    UserResponse save(UserResponse user);
+    UserResponse save(UserRequest user);
 }

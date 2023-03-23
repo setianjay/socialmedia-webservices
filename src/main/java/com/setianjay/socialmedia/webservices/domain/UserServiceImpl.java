@@ -1,6 +1,7 @@
 package com.setianjay.socialmedia.webservices.domain;
 
 import com.setianjay.socialmedia.webservices.domain.service.UserService;
+import com.setianjay.socialmedia.webservices.model.request.UserRequest;
 import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse save(UserResponse user) {
+    public UserResponse save(UserRequest user) {
         return userRepository.save(user);
     }
 }

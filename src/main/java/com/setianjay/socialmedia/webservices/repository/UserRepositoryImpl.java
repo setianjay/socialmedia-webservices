@@ -2,6 +2,7 @@ package com.setianjay.socialmedia.webservices.repository;
 
 import com.setianjay.socialmedia.webservices.dao.UserDao;
 import com.setianjay.socialmedia.webservices.model.entity.UserEntity;
+import com.setianjay.socialmedia.webservices.model.request.UserRequest;
 import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 import com.setianjay.socialmedia.webservices.domain.repository.UserRepository;
 import com.setianjay.socialmedia.webservices.util.MappingUtil;
@@ -38,8 +39,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public UserResponse save(UserResponse user) {
-        UserEntity userEntity = MappingUtil.userResponseToUserEntity(user);
+    public UserResponse save(UserRequest user) {
+        UserEntity userEntity = MappingUtil.userRequestToUserEntity(user);
         return MappingUtil.userEntityToUserResponse(userDao.save(userEntity));
     }
 }
