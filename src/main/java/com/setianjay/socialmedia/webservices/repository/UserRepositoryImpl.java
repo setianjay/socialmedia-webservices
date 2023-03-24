@@ -9,6 +9,7 @@ import com.setianjay.socialmedia.webservices.util.MappingUtil;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -19,23 +20,20 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Boolean deleteById(Long id) {
-        return userDao.deleteById(id);
+    public void deleteById(Long id) {
+        userDao.deleteById(id);
     }
 
     @Override
     public List<UserResponse> findAll() {
-        return MappingUtil.listUserEntityToListUserResponse(userDao.findAll());
+        return userDao.findAll().stream().map(MappingUtil::userEntityToUserResponse).toList();
     }
 
     @Override
     public UserResponse findById(Long id) {
-        UserEntity user = userDao.findById(id);
-        if (user == null) {
-            return null;
-        }
+        Optional<UserEntity> user = userDao.findById(id);
+        return user.map(MappingUtil::userEntityToUserResponse).orElse(null);
 
-        return MappingUtil.userEntityToUserResponse(user);
     }
 
     @Override

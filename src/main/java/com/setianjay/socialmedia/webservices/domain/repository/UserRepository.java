@@ -6,7 +6,7 @@ import com.setianjay.socialmedia.webservices.model.response.UserResponse;
 import java.util.List;
 
 public interface UserRepository {
-    Boolean deleteById(Long id);
+    void deleteById(Long id);
 
     List<UserResponse> findAll();
 

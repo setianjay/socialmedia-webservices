@@ -18,7 +18,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean deleteById(Long id) {
-        return userRepository.deleteById(id);
+        UserResponse user = findById(id);
+
+        if(user != null){
+            userRepository.deleteById(id);
+            return true;
+        }
+
+        return false;
     }
 
     @Override
